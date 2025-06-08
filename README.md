@@ -6,84 +6,93 @@ A comprehensive travel agency management system built with PHP and MySQL.
 
 ```
 wonderease/
-├── assets/
-│   ├── css/
-│   │   ├── style.css
-│   │   └── dashboard.css
-│   ├── js/
-│   │   └── main.js
-│   └── images/
-├── config/
-│   └── database.php
-├── includes/
-│   ├── header.php
-│   ├── footer.php
-│   ├── functions.php
-│   └── auth.php
-├── admin/
-│   ├── index.php
-│   ├── packages.php
+├── actions/                 # Action handlers for various operations
+├── admin/                  # Admin panel files
+│   ├── add_package.php
+│   ├── auth_check.php
 │   ├── bookings.php
-│   ├── users.php
-│   └── staff.php
-├── staff/
-│   ├── index.php
-│   ├── bookings.php
-│   └── support.php
-├── user/
+│   ├── create_first_admin.php
 │   ├── dashboard.php
-│   ├── bookings.php
-│   ├── profile.php
-│   └── support.php
-├── database/
-│   └── schema.sql
-├── auth/
 │   ├── login.php
-│   ├── register.php
-│   └── logout.php
-├── index.php
-└── README.md
+│   ├── newsletter.php
+│   ├── packages.php
+│   ├── register_admin.php
+│   ├── support.php
+│   ├── update_booking.php
+│   ├── users.php
+│   └── view_booking.php
+├── assets/                 # Static assets
+│   ├── css/
+│   ├── js/
+│   └── images/
+├── auth/                   # Authentication related files
+├── components/            # Reusable components
+├── config/               # Configuration files
+├── database/            # Database related files
+│   └── schema.sql
+├── includes/            # Common includes
+├── uploads/            # File upload directory
+├── user/               # User panel files
+│   ├── actions/
+│   ├── auth_check.php
+│   ├── book_package.php
+│   ├── bookings.php
+│   ├── cancel_booking.php
+│   ├── dashboard.php
+│   ├── get_responses.php
+│   ├── packages.php
+│   ├── payment.php
+│   ├── profile.php
+│   ├── support.php
+│   └── view_booking.php
+├── check_db.php        # Database connection checker
+├── index.php          # Main entry point
+├── package_details.php # Package details page
+└── temp_bookings_schema.sql
 ```
 
 ## Features
 
 1. User Authentication
    - Registration and login system
-   - Role-based access (user, admin, staff)
+   - Role-based access (user, admin)
    - Secure password handling
+   - Admin registration system
 
 2. Customer Dashboard
    - Personal information management
-   - Booking history
-   - Trip management
-   - Notifications
+   - Booking history and management
+   - Package browsing and booking
+   - Payment processing
+   - Booking cancellation
+   - Support ticket system
 
 3. Booking System
-   - Package browsing
+   - Package browsing and details
    - Dynamic pricing
    - Booking management
+   - Payment processing
+   - Booking cancellation
    - Email confirmations
 
 4. Admin Dashboard
-   - Package management
+   - Package management (add, edit, delete)
    - User management
-   - Booking oversight
-   - Staff management
-
-5. Staff Dashboard
-   - Booking management
+   - Booking oversight and updates
    - Support ticket handling
-   - Internal notes
+   - Newsletter management
+   - Booking status updates
 
-6. Customer Support
+5. Customer Support
    - Contact form
    - Ticket system
    - Response management
-
-7. Notifications
    - Real-time updates
-   - Read/unread status
-   - Timestamp tracking
+
+6. Payment System
+   - Secure payment processing
+   - Payment status tracking
+   - Booking confirmation
 
 ## Setup Instructions
 
@@ -92,6 +101,7 @@ wonderease/
 3. Configure database connection in `config/database.php`
 4. Start your local server (e.g., XAMPP)
 5. Access the application through your web browser
+6. Create first admin account using `admin/create_first_admin.php`
 
 ## Requirements
 
@@ -107,6 +117,7 @@ wonderease/
 - SQL injection prevention
 - XSS protection
 - CSRF protection
+- Secure file upload handling
 
 ## Database Schema
 
@@ -114,9 +125,9 @@ The database includes the following main tables:
 - users
 - packages
 - bookings
+- payments
 - support_messages
 - notifications
-- staff_notes
 
 Detailed schema can be found in `database/schema.sql`
 
