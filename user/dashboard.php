@@ -107,7 +107,7 @@ $unread_count = $stmt->fetchColumn();
                     <?php if (empty($notifications)): ?>
                         <div class="no-notifications">
                             <i class="fas fa-bell-slash"></i>
-                            <p>No new notifications</p>
+                        <p>No new notifications</p>
                             <small>We'll notify you when there's something important.</small>
                         </div>
                     <?php else: ?>
@@ -150,34 +150,34 @@ $unread_count = $stmt->fetchColumn();
                     <?php endif; ?>
                 </div>
 
-                <section class="bookings">
-                    <h2>Recent Bookings</h2>
-                    <?php if (empty($bookings)): ?>
-                        <p>No bookings found. <a href="../packages.php">Browse packages</a></p>
-                    <?php else: ?>
-                        <div class="booking-list">
-                            <?php foreach ($bookings as $booking): ?>
-                                <div class="booking-card">
-                                    <h3><?php echo htmlspecialchars($booking['title']); ?></h3>
-                                    <p class="destination"><?php echo htmlspecialchars($booking['destination']); ?></p>
-                                    <div class="booking-details">
-                                        <p><strong>Booking Date:</strong> <?php echo date('M d, Y', strtotime($booking['booking_date'])); ?></p>
-                                        <p><strong>Travelers:</strong> <?php echo $booking['travelers']; ?></p>
-                                        <p><strong>Total Price:</strong> $<?php echo number_format($booking['total_price'], 2); ?></p>
-                                        <p><strong>Status:</strong> <span class="status-<?php echo $booking['status']; ?>"><?php echo ucfirst($booking['status']); ?></span></p>
-                                    </div>
-                                    <?php if ($booking['status'] === 'pending'): ?>
-                                        <div class="booking-actions">
-                                            <a href="cancel_booking.php?id=<?php echo $booking['id']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to cancel this booking?')">Cancel Booking</a>
-                                        </div>
-                                    <?php endif; ?>
+            <section class="bookings">
+                <h2>Recent Bookings</h2>
+                <?php if (empty($bookings)): ?>
+                    <p>No bookings found. <a href="../packages.php">Browse packages</a></p>
+                <?php else: ?>
+                    <div class="booking-list">
+                        <?php foreach ($bookings as $booking): ?>
+                            <div class="booking-card">
+                                <h3><?php echo htmlspecialchars($booking['title']); ?></h3>
+                                <p class="destination"><?php echo htmlspecialchars($booking['destination']); ?></p>
+                                <div class="booking-details">
+                                    <p><strong>Booking Date:</strong> <?php echo date('M d, Y', strtotime($booking['booking_date'])); ?></p>
+                                    <p><strong>Travelers:</strong> <?php echo $booking['travelers']; ?></p>
+                                    <p><strong>Total Price:</strong> $<?php echo number_format($booking['total_price'], 2); ?></p>
+                                    <p><strong>Status:</strong> <span class="status-<?php echo $booking['status']; ?>"><?php echo ucfirst($booking['status']); ?></span></p>
                                 </div>
-                            <?php endforeach; ?>
-                        </div>
-                    <?php endif; ?>
-                </section>
-            </div>
+                                <?php if ($booking['status'] === 'pending'): ?>
+                                    <div class="booking-actions">
+                                        <a href="cancel_booking.php?id=<?php echo $booking['id']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to cancel this booking?')">Cancel Booking</a>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+            </section>
         </div>
+    </div>
     </div>
 
     <!-- The Modal Structure for All Notifications -->
