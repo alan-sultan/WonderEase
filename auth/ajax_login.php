@@ -12,8 +12,8 @@ try {
         throw new Exception('Invalid request method');
     }
 
-    $email = trim($_POST['email'] ?? '');
-    $password = $_POST['password'] ?? '';
+    $email = filter_var(trim($_POST['email'] ?? ''), FILTER_SANITIZE_EMAIL);
+    $password = trim($_POST['password'] ?? '');
 
     if (empty($email) || empty($password)) {
         throw new Exception('Please enter both email and password');

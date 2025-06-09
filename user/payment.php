@@ -159,8 +159,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                 </div>
 
-                <p class="fallback-message">If you encounter any issues with the payment, please select 'Bank Transfer' as your payment method and follow the instructions provided.</p>
-
                 <form method="POST" class="payment-form" onsubmit="return validateForm()">
                     <div class="form-group <?php echo isset($form_errors['payment_method']) ? 'has-error' : ''; ?>">
                         <label for="payment_method">Payment Method:</label>
@@ -168,7 +166,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <option value="">Select Payment Method</option>
                             <option value="credit_card" <?php echo isset($_POST['payment_method']) && $_POST['payment_method'] === 'credit_card' ? 'selected' : ''; ?>>Credit Card</option>
                             <option value="debit_card" <?php echo isset($_POST['payment_method']) && $_POST['payment_method'] === 'debit_card' ? 'selected' : ''; ?>>Debit Card</option>
-                            <option value="bank_transfer" <?php echo isset($_POST['payment_method']) && $_POST['payment_method'] === 'bank_transfer' ? 'selected' : ''; ?>>Bank Transfer</option>
                         </select>
                         <?php if (isset($form_errors['payment_method'])): ?>
                             <div class="error-message"><i class="fas fa-exclamation-circle"></i> <span><?php echo $form_errors['payment_method']; ?></span></div>

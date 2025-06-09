@@ -24,7 +24,7 @@ function registerUser($name, $email, $phone, $password)
         $stmt = $conn->prepare("INSERT INTO users (name, email, phone, password) VALUES (?, ?, ?, ?)");
         $stmt->execute([$name, $email, $phone, $hashedPassword]);
         return ['success' => true, 'message' => 'Registration successful'];
-    } catch (PDOException $e) {
+    } catch (   Exception $e) {
         return ['success' => false, 'message' => 'Registration failed: ' . $e->getMessage()];
     }
 }
